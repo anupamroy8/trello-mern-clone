@@ -9,6 +9,7 @@ var mongoose = require("mongoose");
 
 var indexRouter = require("./routes/index");
 var apiRouter = require("./routes/api");
+var userRouter = require("./routes/api/users");
 
 var app = express();
 
@@ -46,9 +47,18 @@ mongoose.set("useFindAndModify", false);
 mongoose.set("useNewUrlParser", true);
 
 // connect to mongodb
-mongoose.connect("mongodb://localhost:27017/node_react_bp", function (err) {
-  console.log("mongodb connected ?", err ? false : true);
-});
+mongoose.connect(
+  "mongodb+srv://admin:!mroy@123@cluster0.ya6uh.mongodb.net/trelloclone?retryWrites=true&w=majority",
+  {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true,
+  },
+  function (err) {
+    console.log("mongodb connected ?", err ? false : true);
+  }
+);
 
 // webpack
 if (process.env.NODE_ENV === "development") {
@@ -68,6 +78,7 @@ if (process.env.NODE_ENV === "development") {
 
 // Route handler
 app.use("/api/v1", apiRouter); // api route handler
+app.use("/api/v1/users", userRouter); // api route handler
 app.use("/", indexRouter); // react handler
 
 // catch 404 and forward to error handler

@@ -1,9 +1,5 @@
-body {
-  margin: 10x;
-}
-
-h1 {
-  text-align: center;
-  color: gray;
-  margin-top: 50px;
-}
+@import "./reset.scss";
+@import "./home.scss";
+@import "./header.scss";
+@import "./common.scss";
+@import "./form.scss";

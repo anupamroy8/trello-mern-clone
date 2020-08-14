@@ -1,16 +1,11 @@
 var express = require("express");
+var bcrypt = require("bcrypt");
 var router = express.Router();
+var User = require("../../models/user");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
   res.json({ success: true, message: "Welcome to Node APIs" });
 });
 
-router.get("/register", function (req, res, next) {
-  res.render("register");
-});
-
-router.post("/register", function (req, res, next) {
-  console.log(req.body);
-});
 module.exports = router;
